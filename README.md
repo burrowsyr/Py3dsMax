@@ -76,7 +76,7 @@ The Python directory could be a local installed version of python or a python co
 |                  ||            |                       |
 |      connected: ----!NO!       <----------------+      |
 |                  ||            |                |      |
-|                  ▽            |                △     ▽
+|                  ▽            |                △      ▽
 |    +--------------------- +    |        +--------------------- +     
 |    | Internal Python      |    |        | External Python      |     
 |    +----------------------+    |        +----------------------+     
