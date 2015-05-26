@@ -675,5 +675,5 @@ init_module(void) {
 	Py_INCREF(&AtTimeType);
 	PyModule_AddObject( module, "AtTime", (PyObject*)&AtTimeType );
 	
-	mprintf( _T("[blurPython] DLL has been successfully loaded.\n") );
+	mprintf( _T("\n[blurPython] DLL has been successfully loaded.\n") );
 }

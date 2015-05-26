@@ -6,6 +6,8 @@
 	\author		Blur Studio (c) 2010
 	\email		beta@blur.com
 
+	\edit		Michael Loeffler @ Burrows (c) 2015
+
 	\license	This software is released under the GNU General Public License.  For more info, visit: http://www.gnu.org/
 */
 
@@ -37,15 +39,64 @@
 #include "macros.h"
 #include "wrapper.h"
 
+// additional string conversion
+#include "stringUtils.h"
+
 // Define the python struct in 3dsMax
-def_struct_primitive( import, pymax, "import" );
-def_struct_primitive( reload, pymax, "reload" );
-def_struct_primitive( run,    pymax, "run" );
-def_struct_primitive( exec,   pymax, "exec" );
+def_struct_primitive( import,  pymax, "import" );
+def_struct_primitive( reload,  pymax, "reload" );
+def_struct_primitive( run,     pymax, "run" );
+def_struct_primitive( exec,    pymax, "exec" );
+
+// Define additional python struct to check running python version
+def_struct_primitive( version, pymax, "version" );
+def_struct_primitive( home,    pymax, "home" );
+def_struct_primitive( prefix,  pymax, "prefix" );
+
+// python.version function: print the version of python which is used
+Value* version_cf(Value** anyArgs, int count) {
+	// Step 1: make sure the arguments supplied are correct
+	check_arg_count( python.version, 0, count );
+
+	// Step 2: protect the maxscript memory
+	MXS_PROTECT( two_value_locals( mxs_check, mxs_return ) );
+
+	// Step 3: print result into maxscript listener
+	mprintf( constChar2wchar_t( Py_GetVersion() )); 
+	mprintf( _T("\n"));
+	return &ok;		
+	}
+
+// python.home function: print the home dir location of python
+Value* home_cf(Value** anyArgs, int count) {
+	// Step 1: make sure the arguments supplied are correct
+	check_arg_count( python.home, 0, count );
+
+	// Step 2: protect the maxscript memory
+	MXS_PROTECT( two_value_locals( mxs_check, mxs_return ) );
+
+	// Step 3: print result into maxscript listener
+	mprintf( char2wchar_t( combine( Py_GetPythonHome(), "\n") ) );
+	return &ok;	
+	}
+
+// python.prefix function: print the python executable which is used
+Value* prefix_cf(Value** anyArgs, int count) {
+	// Step 1: make sure the arguments supplied are correct
+	check_arg_count( python.prefix, 0, count );
+
+	// Step 2: protect the maxscript memory
+	MXS_PROTECT( two_value_locals( mxs_check, mxs_return ) );
+
+	// Step 3: print result into maxscript listener
+	mprintf( char2wchar_t( combine( Py_GetPrefix(), "\n") ) );
+	return &ok;	
+	}
+// ----------- END: Additional functions..
+
 
 // python.import function: import a python module to maxscript
-Value*
-import_cf( Value** arg_list, int count ) {
+Value* import_cf( Value** arg_list, int count ) {
 	// Step 1: make sure the arguments supplied are correct
 	check_arg_count( python.import, 1, count );
 
@@ -78,8 +129,7 @@ import_cf( Value** arg_list, int count ) {
 }
 
 // python.reload function: reload an existing module in maxscript
-Value*
-reload_cf( Value** arg_list, int count ) {
+Value* reload_cf( Value** arg_list, int count ) {
 	// Step 1: make sure the arguments supplied are correct in count
 	check_arg_count( python.reload, 1, count );
 
@@ -99,8 +149,7 @@ reload_cf( Value** arg_list, int count ) {
 }
 
 // python.run function: run a python file from maxscript
-Value*
-run_cf( Value** arg_list, int count ) {
+Value* run_cf( Value** arg_list, int count ) {
 	// Step 1: make sure the arguments supplied are correct in count
 	check_arg_count( python.run, 1, count );
 
@@ -139,8 +188,7 @@ run_cf( Value** arg_list, int count ) {
 }
 
 // python.exec function: execute a python command through a maxscript string
-Value*
-exec_cf( Value** arg_list, int count ) {
+Value* exec_cf( Value** arg_list, int count ) {
 	// Step 1: make sure the arguments supplied are correct in count
 	check_arg_count( python.exec, 1, count );
 

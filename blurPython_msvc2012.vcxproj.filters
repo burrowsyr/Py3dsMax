@@ -14,6 +14,12 @@
     <ClCompile Include="wrapper.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="setup_python.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="stringUtils.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
@@ -27,6 +33,9 @@
       <Filter>include</Filter>
     </ClInclude>
     <ClInclude Include="wrapper.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="stringUtils.h">
       <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>

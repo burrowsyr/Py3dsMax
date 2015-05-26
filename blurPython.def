@@ -1,9 +1,9 @@
 LIBRARY	blurPython.dlx
 EXPORTS
 	LibDescription				@1		PRIVATE
-	LibInit						@2		PRIVATE
-	LibVersion					@3		PRIVATE
-	LibNumberClasses	@4       PRIVATE
-	LibClassDesc		@5       PRIVATE
+    LibInitialize    			@3		PRIVATE
+	LibVersion					@4		PRIVATE
+	LibNumberClasses			@5       PRIVATE
+	LibClassDesc				@6       PRIVATE
 SECTIONS
 	.data	READ WRITE
