@@ -1,3 +1,9 @@
+This repository is forked from https://github.com/blurstudio/Py3dsMax.
+The `bluPython` plugin is adjusted to our pipeline needs.
+
+----
+
+
 Py3dsMax allows two way access between the maxscript and python interpreters. In maxscript you can import python modules and classes create objects set values etc. In python you can access maxscript commands get and set values. 
 
 Some non-pythonic functionality does not translate to python like the by-reference character "&". To work around these limitations you can generally define a helper maxscript struct like the pyhelper class.
