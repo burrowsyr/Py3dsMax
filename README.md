@@ -72,3 +72,18 @@ If a binary compatible version is listed you can use the same plugin compiled fo
 Compiled output goes in [project]/bin/[platform]/Max[year]_Python[ver]/ or for older versions it may go into [project]/bin/[platform]/[configuration]/
 
 # Usage
+
++-------+----------+------+
+| Table Headings   | Here |
++-------+----------+------+
+| Sub   | Headings | Too  |
++=======+==========+======+
+| cell  | column spanning |
++ spans +----------+------+
+| rows  | normal   | cell |
++-------+----------+------+
+| multi | * cells can be  |
+| line  | * formatted     |
+| cells | * paragraphs    |
+| too   |                 |
++-------+-----------------+
