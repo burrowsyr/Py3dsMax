@@ -67,34 +67,34 @@ This variable has to be named `3DSMAX_PYTHON` and pointed to the python director
 The Python directory could be a local installed version of python or a python copy somewhere in your network.
 
 ```
-+-------------------------------+
-| 3DS Max Application           |
-+-------------------------------+
-| Plug-ins:  +---------------+  |
-|            |  blurPythonXX |  |
-|            +---------------+  |
-|                    |          |
-|                    +------------------------------++
-|                               |                   ||
-|                               |                   ▽
-|   +--------------------- +    |        +--------------------- +     
-|   | Internal Python      |    |        | External Python      |     
-|   +----------------------+    |        +----------------------+     
-|   | [X] MaxPlus          |    |        | [X] MaxPlus          |     
-|   | [ ] Py3dsMax         |    |        | [X] Py3dsMax         |     
-|   | [X] PySide           |    |        | [X] PySide           |
-|   | [ ] PyQtX            |  connected: | [X] PyQtX            |
-|   | [ ] Threading        |<====|X|====>| [X] Threading        |  
-|   | [ ] Remembers        |    ! NO !   | [X] Remembers        |    
-|   |     environment      |    |        |     environment      |    
-|   | [X] Could run        |    |        | [X] Could run        |
-|   |     MaxScript        |    |        |     MaxScript        |
-|   |                      |    |        |                      |
-|   | MaxScript command:   |    |        | MaxScript command:   |     
-|   | `python.execute`     |    |        | `pymax.exec`         |     
-|   | `python.executeFile` |    |        | `pymax.run`          |     
-|   | ...                  |    |        | ...                  |     
-|   +----------------------+    |        +----------------------+     
-|                               |
-+-------------------------------+
++--------------------------------+
+| 3DS Max Application            |
++--------------------------------+
+| Plug-ins:  +---------------+   |
+|            |  blurPythonXX |---------------------------+
+|            +---------------+   |                       |
+|                  ||            |                       |
+|      connected: ----!NO!       <----------------+      |
+|                  ||            |                |      |
+|                  ▽            |                △     ▽
+|    +--------------------- +    |        +--------------------- +     
+|    | Internal Python      |    |        | External Python      |     
+|    +----------------------+    |        +----------------------+     
+|    | [X] MaxPlus          |    |        | [X] MaxPlus          |     
+|    | [ ] Py3dsMax         |    |        | [X] Py3dsMax         |     
+|    | [X] PySide           |    |        | [X] PySide           |
+|    | [ ] PyQtX            |  connected: | [X] PyQtX            |
+|    | [ ] Threading        |<====|X|====>| [X] Threading        |  
+|    | [ ] Remembers        |    !NO!     | [X] Remembers        |    
+|    |     environment      |    |        |     environment      |    
+|    | [X] Could run        |    |        | [X] Could run        |
+|    |     MaxScript        |    |        |     MaxScript        |
+|    |                      |    |        |                      |
+|    | MaxScript command:   |    |        | MaxScript command:   |     
+|    | `python.execute`     |    |        | `pymax.exec`         |     
+|    | `python.executeFile` |    |        | `pymax.run`          |     
+|    | ...                  |    |        | ...                  |     
+|    +----------------------+    |        +----------------------+     
+|                                |
++--------------------------------+
 ```
