@@ -23,20 +23,17 @@ Plugin Load Required Changes:
 
 Example `plugin.ini`:
  ```    
- 
  [Directories]
  ;=;
  blur = C:\max2015\plugins\blur
-  
  ```
  
  Please use `LibInit()` for the `dllexport` and comment the `LibInitialize()` out or remove it:
  
  ```
- 
  __declspec( dllexport ) void           LibInit()              { setup_py(); init_module(); }
  //__declspec( dllexport ) void           LibInitialize()        { setup_py();	init_module(); }
- 
+
  ```
 
 2. To use a startup script with the `LoadDllsFromDir DIR_PATH "*.dlx"` command to load the plugin, please
@@ -44,34 +41,31 @@ make sure that the plugin will not be loaded with any `*ini` file. You should us
  instead of `LibInit()` for the `dllexport`:
  
  ```
- 
- //__declspec( dllexport ) void           LibInit()              { setup_py(); init_module(); }
- 
- __declspec( dllexport ) void           LibInitialize()        { setup_py();	init_module(); }
- 
+  //__declspec( dllexport ) void           LibInit()              { setup_py(); init_module(); }
+  __declspec( dllexport ) void           LibInitialize()        { setup_py();	init_module(); }
  ```
 
 Here is a breakdown of the Visual Studio requirements required to build this package. 
 If a binary compatible version is listed you can use the same plugin compiled for that version.
 
-| 3ds Max Version | Visual Studio | Binary Compatible | 32bit Python  | 64bit Python | Config/Platform             |
-|-----------------|---------------|-------------------|---------------|--------------|-----------------------------|
-| 2012            | 2008 SP 1 /   |                   | PYTHON24      | PYTHON26_64 /| Max2012_Python24 /          |
-|                 | 2010 SP 1     |                   |               | PYTHON27_64  | Win32 Max2012x64_Python26 / |
-|                 |               |                   |               |              | x64                         |
-|-----------------|---------------|-------------------|---------------|--------------|-----------------------------|
-| 2013            | 2010 SP1      |                   | PYTHON27      | PYTHON27_64  | Max2013x32_Python27 /       |
-|                 |               |                   |               |              | Win32 Max2013x64_Python27 / |
-|                 |               |                   |               |              | x64 /                       |     
-|-----------------|---------------|-------------------|---------------|--------------|-----------------------------|
-| 2014            | 2012 Update 4 |                   | Not Supported | PYTHON27_64  | Max2014_Python27 /         |
-|                 |               |                   |               |              | x64                        |     
-|-----------------|---------------|-------------------|---------------|--------------|----------------------------|
-| 2015            | 2012 Update 4 |                   | Not Supported | PYTHON27_64  | Max2015x64_Python27 /      |
-|                 |               |                   |               |              | x64                        |
-|-----------------|---------------|-------------------|---------------|--------------|----------------------------|
-| 2016            | 2012 Update 4 | 2015              | Not Supported | PYTHON27_64  | Max2015x64_Python27 /      |
-|                 |               |                   |               |              | x64                        |
+| 3ds Max Version | Visual Studio | Binary Compatible | 32bit Python  | 64bit Python  | Config/Platform              |
+|-----------------|---------------|-------------------|---------------|---------------|------------------------------|
+| 2012            | 2008 SP 1 /   |                   | PYTHON24      | *PYTHON26_64 /| *Max2012_Python24 /          |
+|                 | 2010 SP 1     |                   |               | *PYTHON27_64  | *Win32 Max2012x64_Python26 / |
+|                 |               |                   |               |               | *x64                         |
+|-----------------|---------------|-------------------|---------------|---------------|------------------------------|
+| 2013            | 2010 SP1      |                   | PYTHON27      | *PYTHON27_64  | *Max2013x32_Python27 /       |
+|                 |               |                   |               |               | *Win32 Max2013x64_Python27 / |
+|                 |               |                   |               |               | *x64                         |     
+|-----------------|---------------|-------------------|---------------|---------------|------------------------------|
+| 2014            | 2012 Update 4 |                   | Not Supported | *PYTHON27_64  | *Max2014_Python27 /          |
+|                 |               |                   |               |               | *x64                         |     
+|-----------------|---------------|-------------------|---------------|-------------- |------------------------------|
+| 2015            | 2012 Update 4 |                   | Not Supported | *PYTHON27_64  | *Max2015x64_Python27 /       |
+|                 |               |                   |               |               | *x64                         |
+|-----------------|---------------|-------------------|---------------|---------------|------------------------------|
+| 2016            | 2012 Update 4 | 2015              | Not Supported |* PYTHON27_64  | *Max2015x64_Python27 /       |
+|                 |               |                   |               |               | *x64                         |
 
 
 Compiled output goes in [project]/bin/[platform]/Max[year]_Python[ver]/ or for older versions it may go into [project]/bin/[platform]/[configuration]/
