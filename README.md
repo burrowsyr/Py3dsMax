@@ -48,6 +48,7 @@ make sure that the plugin will not be loaded with any `*ini` file. You should us
 Here is a breakdown of the Visual Studio requirements required to build this package. 
 If a binary compatible version is listed you can use the same plugin compiled for that version.
 
++-----------------+---------------+-------------------+---------------+---------------+------------------------------+
 | 3ds Max Version | Visual Studio | Binary Compatible | 32bit Python  | 64bit Python  | Config/Platform              |
 +-----------------+---------------+-------------------+---------------+---------------+------------------------------+
 | 2012            | 2008 SP 1 /   |                   | PYTHON24      | *PYTHON26_64 /| *Max2012_Python24 /          |
@@ -66,7 +67,7 @@ If a binary compatible version is listed you can use the same plugin compiled fo
 +-----------------+---------------+-------------------+---------------+---------------+------------------------------+
 | 2016            | 2012 Update 4 | 2015              | Not Supported |* PYTHON27_64  | *Max2015x64_Python27 /       |
 |                 |               |                   |               |               | *x64                         |
-
++-----------------+---------------+-------------------+---------------+---------------+------------------------------+
 
 Compiled output goes in [project]/bin/[platform]/Max[year]_Python[ver]/ or for older versions it may go into [project]/bin/[platform]/[configuration]/
 
