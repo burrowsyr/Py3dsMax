@@ -51,13 +51,50 @@ If a binary compatible version is listed you can use the same plugin compiled fo
 | 3ds Max Version | Visual Studio        | Binary Compatible | 32bit Python  | 64bit Python  | Config/Platform                                               |
 |-----------------|----------------------|-------------------|---------------|---------------|---------------------------------------------------------------|
 | 2012            | 2008 SP1 / 2010 SP1  |                   | PYTHON24      | PYTHON26_64 /PYTHON27_64 | Max2012_Python24 / Win32 Max2012x64_Python26 / x64 |
-| 2013            | 2010 SP1             |                   | PYTHON27      | PYTHON27_64              | Max2013x32_Python27 / Win32 Max2013x64_Python27 / x64      |
-| 2014            | 2012 Update 4        |                   | Not Supported | PYTHON27_64              | Max2014_Python27 / x64         |
-| 2015            | 2012 Update 4        |                   | Not Supported | PYTHON27_64              | Max2015x64_Python27 / x64      |
-| 2016            | 2012 Update 4        | 2015              | Not Supported | PYTHON27_64              | Max2015x64_Python27 / x64      |
+| 2013            | 2010 SP1             |                   | PYTHON27      | PYTHON27_64              | Max2013x32_Python27 / Win32 Max2013x64_Python27 / x64 |
+| 2014            | 2012 Update 4        |                   | Not Supported | PYTHON27_64              | Max2014_Python27 / x64 |
+| 2015            | 2012 Update 4        |                   | Not Supported | PYTHON27_64              | Max2015x64_Python27 / x64 |
+| 2016            | 2012 Update 4        | 2015              | Not Supported | PYTHON27_64              | Max2015x64_Python27 / x64 |
 
 
 
 Compiled output goes in [project]/bin/[platform]/Max[year]_Python[ver]/ or for older versions it may go into [project]/bin/[platform]/[configuration]/
 
-# Usage
+# Using a different Python Interpreter
+
+To use a separate python interpreter it is necessary to setup an additional system environment variable.
+This variable has to be named `3DSMAX_PYTHON` and pointed to the python directory you want to use.
+The Python directory could be a local installed version of python or a python copy somewhere in your network.
+
+```
++-------------------------------+
+| 3DS Max Application           |
++-------------------------------+
+| Plug-ins:  +---------------+  |
+|            |  blurPythonXX |  |
+|            +---------------+  |
+|                    |          |
+|                    +------------------------------++
+|                               |                   ||
+|                               |                   ▽
+|   +--------------------- +    |        +--------------------- +     
+|   | Internal Python      |    |        | External Python      |     
+|   +----------------------+    |        +----------------------+     
+|   | [X] MaxPlus          |    |        | [X] MaxPlus          |     
+|   | [ ] Py3dsMax         |    |        | [X] Py3dsMax         |     
+|   | [X] PySide           |    |        | [X] PySide           |
+|   | [ ] PyQtX            |  connected: | [X] PyQtX            |
+|   | [ ] Threading        |<====|X|====>| [X] Threading        |  
+|   | [ ] Remembers        |    ! NO !   | [X] Remembers        |    
+|   |     environment      |    |        |     environment      |    
+|   | [X] Could run        |    |        | [X] Could run        |
+|   |     MaxScript        |    |        |     MaxScript        |
+|   |                      |    |        |                      |
+|   | MaxScript command:   |    |        | MaxScript command:   |     
+|   | `python.execute`     |    |        | `pymax.exec`         |     
+|   | `python.executeFile` |    |        | `pymax.run`          |     
+|   | ...                  |    |        | ...                  |     
+|   +----------------------+    |        +----------------------+     
+|                               |
++-------------------------------+
+```
