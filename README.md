@@ -1,5 +1,5 @@
 This repository is forked from https://github.com/blurstudio/Py3dsMax.
-The `bluPython` plugin is adjusted to our pipeline needs.
+The `blurPython` plugin is adjusted to our pipeline needs.
 
 ----
 
