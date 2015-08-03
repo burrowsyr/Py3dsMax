@@ -49,9 +49,50 @@ def_struct_primitive( run,     pymax, "run" );
 def_struct_primitive( exec,    pymax, "exec" );
 
 // Define additional python struct to check running python version
+def_struct_primitive( sysPath, pymax, "sysPath" );
+def_struct_primitive( environ, pymax, "environ" );
 def_struct_primitive( version, pymax, "version" );
 def_struct_primitive( home,    pymax, "home" );
 def_struct_primitive( prefix,  pymax, "prefix" );
+
+// python.home function: print the home dir location of python
+Value* sysPath_cf(Value** anyArgs, int count) {
+	// Step 1: make sure the arguments supplied are correct
+	check_arg_count( python.sysPath, 0, count );
+
+	// Step 2: protect the maxscript memory
+	MXS_PROTECT( two_value_locals( mxs_check, mxs_return ) );
+
+	// Step 3: print result into maxscript listener
+	char* cmd = 
+			"print u'\\n'.join([s for s in sys.path])";
+	PyRun_SimpleString(cmd);
+	return &ok;	
+	}
+
+// python.home function: print the home dir location of python
+Value* environ_cf(Value** anyArgs, int count) {
+	// Step 1: make sure the arguments supplied are correct
+	check_arg_count( python.environ, 0, count );
+
+	// Step 2: protect the maxscript memory
+	MXS_PROTECT( two_value_locals( mxs_check, mxs_return ) );
+
+	// Step 3: print result into maxscript listener
+	//PyObject* main = PyImport_AddModule("__main__");
+	//PyObject* globalDictionary = PyDict_New();// PyModule_GetDict(main);
+	//PyObject* localDictionary = PyDict_New();
+	char* cmd = "import os\n"
+				"keys = os.environ.keys()\n"
+				"keys.sort()\n"
+				"print u'\\n'.join( [k+' :\\n'+(' '*24)+os.environ[k] for k in keys] )";
+	//PyRun_String(cmd, Py_file_input, globalDictionary, localDictionary);
+	//char* stringEnv = PyString_AsString(PyDict_GetItemString(localDictionary, "result"));
+	//char* charEnv = PyString_AsString(stringEnv);
+	//mprintf( char2wchar_t( combine( stringEnv, "\n") ) );
+	PyRun_SimpleString(cmd);
+	return &ok;	
+	}
 
 // python.version function: print the version of python which is used
 Value* version_cf(Value** anyArgs, int count) {

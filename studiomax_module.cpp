@@ -637,8 +637,7 @@ static PyMethodDef module_methods[] = {
 // initialize the plugin
 PyMODINIT_FUNC
 init_module(void) {
-	// Step 1: initialize python
-	Py_Initialize();
+	
 
 	// Step 2: make sure the mxs type is running
 	if ( PyType_Ready(&MxsType) < 0 ) {

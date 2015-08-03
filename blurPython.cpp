@@ -49,9 +49,11 @@ BOOL WINAPI	DLLMain( HINSTANCE hModule, DWORD ul_reason, LPVOID lpReserved ) {
 // the init_module function is ofund in the studiomax_module file
 PyMODINIT_FUNC init_module();
 
+
 // setup_py function is defined inside setup_python.cpp file.
 // this function has to be called before Py_Initialize() to use a different python interpreter
 int setup_py();
+//int setup_virtualenv();
 
 // Return version so can detect obsolete DLLs
 __declspec( dllexport ) ULONG          LibVersion()           { return VERSION_3DSMAX; }
@@ -63,7 +65,7 @@ __declspec( dllexport ) void           LibInit()              { setup_py(); init
 
 // Initialisation 3dsMax is expecting (works for manual load of the plugin
 //       -> MaxScript command:  LoadDllsFromDir DIR_PATH "*.dlx"
-__declspec( dllexport ) void           LibInitialize()        { setup_py();	init_module(); }
+//__declspec( dllexport ) void           LibInitialize()        { setup_py();	init_module(); }
 
                                                               
 // Maxscript 2012 requires these additional exports                                                             
