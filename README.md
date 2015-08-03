@@ -1,5 +1,5 @@
 This repository is forked from https://github.com/blurstudio/Py3dsMax.
-The `bluPython` plugin is adjusted to our pipeline needs.
+The `blurPython` plugin is adjusted to our pipeline needs.
 
 ----
 
@@ -90,8 +90,9 @@ The Python directory could be a local installed version of python or a python co
 |    | [ ] Py3dsMax         |    |        | [X] Py3dsMax         |     
 |    | [X] PySide           |    |        | [X] PySide           |
 |    | [ ] PyQtX            |  connected: | [X] PyQtX            |
-|    | [ ] Threading        |<====|X|====>| [X] Threading        |  
-|    | [ ] Remembers        |    !NO!     | [X] Remembers        |    
+|    | [ ] Python Thread    |<====|X|====>| [X] Python Tread     |  
+|    |     Save             |    !NO!     |     Save
+|    | [ ] Remembers        |    |        | [X] Remembers        |    
 |    |     environment      |    |        |     environment      |    
 |    | [X] Could run        |    |        | [X] Could run        |
 |    |     MaxScript        |    |        |     MaxScript        |
